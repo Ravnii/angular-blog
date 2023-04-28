@@ -1,0 +1,49 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "task": "Get to work",
+      "done": false
+    },
+    {
+      "id": 2,
+      "task": "Fall asleep",
+      "done": false
+    },
+    {
+      "id": 3,
+      "task": "Pick up groceries",
+      "done": true
+    },
+    {
+      "id": 4,
+      "task": "Go home",
+      "done": false
+    },
+    {
+      "id": 5,
+      "task": "Get up",
+      "done": false
+    },
+    {
+      "id": 6,
+      "task": "Brush teeth",
+      "done": true
+    },
+    {
+      "id": 7,
+      "task": "Take a shower",
+      "done": true
+    },
+    {
+      "id": 8,
+      "task": "Check e-mail",
+      "done": true
+    },
+    {
+      "id": 9,
+      "task": "Walk dog",
+      "done": true
+    }
+  ]
+}

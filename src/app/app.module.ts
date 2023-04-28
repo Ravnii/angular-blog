@@ -1,5 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
+import { HttpClientModule } from '@angular/common/http'
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -24,15 +25,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { NavigationComponent } from './navigation/navigation.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ToDoListComponent } from './to-do-list/to-do-list.component';
-import { TableViewComponent } from './table-view/table-view.component';
-import { FormComponent } from './form/form.component';
-import { DetailsComponent } from './details/details.component';
-import { ButtonComponent } from './components/button/button.component';
 
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ToDoListComponent } from './pages/to-do-list/to-do-list.component';
+import { TableViewComponent } from './pages/table-view/table-view.component';
+import { FormComponent } from './pages/form/form.component';
+import { DetailsComponent } from './pages/details/details.component';
+
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { ButtonComponent } from './components/button/button.component';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-    MatTreeModule
+    MatTreeModule,
+    HttpClientModule
 ],
   bootstrap: [AppComponent]
 })
