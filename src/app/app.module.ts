@@ -21,15 +21,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from "./app-routing.module";
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 import { NavigationComponent } from './navigation/navigation.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { TableViewComponent } from './table-view/table-view.component';
 import { FormComponent } from './form/form.component';
 import { DetailsComponent } from './details/details.component';
+import { ButtonComponent } from './components/button/button.component';
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { DetailsComponent } from './details/details.component';
     ToDoListComponent,
     TableViewComponent,
     FormComponent,
-    DetailsComponent
+    DetailsComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
