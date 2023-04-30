@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs'
 import { Todo } from 'src/app/interfaces/Todo';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  private apiUrl: string = 'http://localhost:5000/todos'
+  private apiUrl: string = environment.apiUrl
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.apiUrl);
