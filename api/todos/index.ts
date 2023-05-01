@@ -1,5 +1,11 @@
-import { AzureFunction, Context, HttpRequest } from "@azure/functions"
-import { CosmosClient } from '@azure/cosmos'
+import { AzureFunction, Context, HttpRequest } from '@azure/functions';
+import { CosmosClient, Item } from '@azure/cosmos';
+
+interface Todo {
+  id?: string;
+  task: string;
+  done: boolean;
+}
 
 const endpoint = process.env.DATABASE_ENDPOINT;
 const key = process.env.DATABASE_KEY;
@@ -19,7 +25,19 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     //const name = (req.query.name || (req.body && req.body.name));
     //context.res.json({ "name": name });
 
-    const result = await fetchAll();
+    let result: any;
+
+    switch (req.method) {
+      case "GET":
+        result = await fetchAll();
+        break;
+      case "PUT":
+        result = await replaceItem(req.body);
+        break;
+      default:
+        result = await fetchAll();
+        break;
+    }
 
     context.res = {
       status: 200 /* Defaults to 200 */,
@@ -30,7 +48,16 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     };
 };
 
-async function fetchAll(): Promise<any[]> {
+async function replaceItem(todo: Todo): Promise<Item> {
+    const { item: result } = await client
+      .database(databaseId)
+      .container(containerId)
+      .item(todo.id).replace<Todo>(todo);
+
+    return result;
+}
+
+async function fetchAll(): Promise<Todo[]> {
   const querySpec = {
     query: 'SELECT c.id, c.task, c.done FROM c',
   };
