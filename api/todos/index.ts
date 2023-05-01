@@ -1,5 +1,5 @@
 import { AzureFunction, Context, HttpRequest } from '@azure/functions';
-import { CosmosClient, Item } from '@azure/cosmos';
+import { CosmosClient } from '@azure/cosmos';
 
 interface Todo {
   id?: string;
@@ -48,13 +48,13 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     };
 };
 
-async function replaceItem(todo: Todo): Promise<Item> {
-    const { item: result } = await client
-      .database(databaseId)
-      .container(containerId)
-      .item(todo.id).replace<Todo>(todo);
+async function replaceItem(todo: Todo): Promise<Todo> {
+  await client
+    .database(databaseId)
+    .container(containerId)
+    .item(todo.id).replace(todo);
 
-    return result;
+  return todo;
 }
 
 async function fetchAll(): Promise<Todo[]> {

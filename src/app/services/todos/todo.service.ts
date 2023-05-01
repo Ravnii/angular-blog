@@ -16,7 +16,6 @@ export class TodoService {
   }
 
   putTodo(todo: Todo): Observable<Todo> {
-    const url = `${this.apiUrl}/${todo.id}`;
-    return this.http.put<Todo>(url, todo);
+    return this.http.put<Todo>(this.apiUrl, todo);
   }
 }

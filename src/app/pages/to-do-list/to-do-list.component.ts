@@ -36,6 +36,7 @@ export class ToDoListComponent implements OnInit {
           event.currentIndex);
 
           event.container.data[event.currentIndex].done = !event.container.data[event.currentIndex].done;
+          
           this.todoService.putTodo(event.container.data[event.currentIndex]).subscribe((todo) => { console.log(todo)});
     }
   }
